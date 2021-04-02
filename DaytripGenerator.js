@@ -1,7 +1,6 @@
 "use strict";
 // This is a day trip generator for southern wisconsinites
 
-
 // arrays for random selections
 let destinations = ["Milwaukee", "Chicago", "Kenosha", "Racine", "Burlington"];
 let kenoshaRestaurants = ["La Fogata", "Ian's Pizza", "Brat Stop", "The Coffee Pot", "Tommy's"];
@@ -27,13 +26,13 @@ function randomRestaurant(){
     if(pickedDestination === "Milwaukee"){
         return milwaukeeRestaurants[Math.floor(Math.random() * 5)]
     }
-    else if(randomDestination === "Chicago"){
+    else if(pickedDestination === "Chicago"){
         return chicagoRestaurants[Math.floor(Math.random() * 5)]
         }
-    else if(randomDestination === "Kenosha"){
+    else if(pickedDestination === "Kenosha"){
         return kenoshaRestaurants[Math.floor(Math.random() * 5)]
         }
-    else if(randomDestination === "Burlington"){
+    else if(pickedDestination === "Burlington"){
         return burlingtonRestaurants[Math.floor(Math.random() * 5)]
     }
     else{
@@ -69,38 +68,38 @@ if(userInput.toLowerCase() === 'yes'){
 
     let tripImpending = true;
     while(tripImpending){
-    let acceptancePrompt = prompt("Do you like this trip? (yes/no)")
-    acceptancePrompt.toLowerCase();
-    if(acceptancePrompt === 'yes'){
-        tripImpending = false;
-        console.log("Enjoy the day trip!");
-        break;
-    }
-    else{
-        let userChange = prompt("What part will you change? (destination/restaurant/transportation/entertainment)")
-        if(userChange.toLowerCase() === 'destination'){
-            pickedDestination = randomDestination();
-            pickedRestaurant = randomRestaurant();
-            displayTrip();
-            console.log("We changed the restaurant since you changed destinations.")
-        }
-        else if(userChange.toLowerCase() === 'restaurant'){
-            pickedRestaurant = randomRestaurant();
-            displayTrip();
-        }
-        else if(userChange.toLowerCase() === 'transportation'){
-            pickedModeOfTransport = randomModeOfTransport();
-            displayTrip();
-        }
-        else if(userChange.toLowerCase() === 'entertainment'){
-            pickedEntertainment = randomEntertainment();
-            displayTrip();
+        let acceptancePrompt = prompt("Do you like this trip? (yes/no)")
+        acceptancePrompt.toLowerCase();
+        if(acceptancePrompt === 'yes'){
+            tripImpending = false;
+            console.log("Enjoy the day trip!");
+            break;
         }
         else{
-            console.log("Type that again");
+            let userChange = prompt("What part will you change? (destination/restaurant/transportation/entertainment)")
+            if(userChange.toLowerCase() === 'destination'){
+                pickedDestination = randomDestination();
+                pickedRestaurant = randomRestaurant();
+                displayTrip();
+                console.log("\n" + "NOTE: We changed the restaurant since you changed destinations.")
+            }
+            else if(userChange.toLowerCase() === 'restaurant'){
+                pickedRestaurant = randomRestaurant();
+                displayTrip();
+            }
+            else if(userChange.toLowerCase() === 'transportation'){
+                pickedModeOfTransport = randomModeOfTransport();
+                displayTrip();
+            }
+            else if(userChange.toLowerCase() === 'entertainment'){
+                pickedEntertainment = randomEntertainment();
+                displayTrip();
+            }
+            else{
+                console.log("Type that again");
+            }
         }
     }
-}
 }
 else{
     console.log("Okay, plan your own trip!")
